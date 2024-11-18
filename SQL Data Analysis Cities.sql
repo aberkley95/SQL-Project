@@ -182,12 +182,38 @@ AND size = 'medium city'
     -- Lacey, Washington: median home cost = 467900 crime rate = 17.6
     -- Olympia, Washington, median home cost = 472500 crime rate = 20.4
     -- Both cities are very comparable, but Lacey scores better in both categories. It has the lower crime rate and median home cost.
+    
+    -- because i don't mind small cities (though medium is our preference), I decided to include small cities in my analysis to double check that lacey is really the best option
+    
+        SELECT city, state
+    FROM cities2
+    WHERE humidity = 'comfortable'
+    AND air_quality_avg < 50
+    AND political_leaning = 'liberal'
+    AND size = 'small city' 
+    ;
+    
+    -- Bremerton, puyallup
+    
+    -- this narrows it down to 4: Bremerton WA, Lacey WA, Olympia WA, Puyallup WA
+    
+    SELECT city, state, median_home_cost, crime_rate
+    FROM cities2
+    WHERE city = 'lacey' 
+    OR city = 'olympia'
+    OR city = 'bremerton'
+    OR city = 'puyallup'
+    ORDER BY 1 DESC;
+  
+	-- Lacey still has the lowest crime rate and the second lowest housing costs. It still appears to be the best option for my personal preference 
+
 
 -- QUESTION: which of our prospective cities that meet all of my conditions is the cheapest and safest city to live in? (aka which city of the ones listed should I live in?)
 -- PROCESS: first I narrowed down my cities by selecting only the ones that are medium sized, liberal leaning, has a comfortable humidity level and has an air quality average of lower than 50 (this standard I found online labeled as a 'good' level of air quality index)
 -- only two cities met every one of my conditions, Olympia and Lacey Washington
 -- I just compared the other stats that were important to me (housing costs and crime rate)
 -- ANSWER: Lacey, Washington is the city I should live in :)
+
 
 
 
